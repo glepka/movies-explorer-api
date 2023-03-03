@@ -1,7 +1,7 @@
 const Movie = require('../models/movie');
-const NotFound = require('../errors/notFound');
-const BadRequest = require('../errors/badRequest');
-const Forbidden = require('../errors/forbidden');
+const NotFound = require('../errors/NotFound');
+const BadRequest = require('../errors/BadRequest');
+const Forbidden = require('../errors/Forbidden');
 
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })

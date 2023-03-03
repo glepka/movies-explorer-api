@@ -7,9 +7,7 @@ const Conflicted = require('../errors/Conflicted');
 const { JWT_SECRET_DEV } = require('../utils/constants');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
-const {
-  CREATED_CODE,
-} = require('../errors/StatusCode');
+const { CREATED_CODE } = require('../errors/StatusCode');
 
 const createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)

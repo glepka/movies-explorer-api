@@ -1,4 +1,4 @@
-const INTERNAL_SERVER_ERROR = require('../errors/StatusCode.js');
+const INTERNAL_SERVER_ERROR = require('../errors/StatusCode');
 
 const errorHandler = (err, req, res, next) => {
   if (err.statusCode) {
