@@ -11,13 +11,11 @@ const { CREATED_CODE } = require('../errors/StatusCode');
 
 const createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
-    .then(() => console.log(req.body))
     .then((hash) => User.create({
       email: req.body.email,
       password: hash,
       name: req.body.name,
     }))
-    .then((user) => console.log(user))
     .then((user) => res.status(CREATED_CODE).send({
       email: user.email,
       name: user.name,
@@ -27,7 +25,6 @@ const createUser = (req, res, next) => {
       if (err.code === 11000) {
         next(new Conflicted('Пользователь уже существует'));
       } else if (err.name === 'ValidationError') {
-        console.log(err);
         next(new BadRequest('Некорректные данные при создании пользователя'));
       } else {
         next(err);
