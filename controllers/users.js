@@ -22,6 +22,7 @@ const createUser = (req, res, next) => {
       _id: user._id,
     }))
     .catch((err) => {
+      console.log(err);
       if (err.code === 11000) {
         next(new Conflicted('Пользователь уже существует'));
       } else if (err.name === 'ValidationError') {
