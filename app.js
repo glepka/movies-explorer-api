@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+const process = require('process');
 const cors = require('./middlewares/cors');
 const limiter = require('./middlewares/rateLimit');
 const router = require('./routes/index');
@@ -35,5 +36,9 @@ app.use(errorLogger);
 app.use(errors());
 
 app.use(errorHandler);
+
+process.on('uncaughtException', (err) => {
+  console.log(err);
+});
 
 app.listen(PORT);
