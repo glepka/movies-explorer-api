@@ -4,6 +4,7 @@ const User = require('../models/user');
 const NotFound = require('../errors/NotFound');
 const BadRequest = require('../errors/BadRequest');
 const Conflicted = require('../errors/Conflicted');
+
 const { JWT_SECRET_DEV } = require('../utils/constants');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -22,7 +23,6 @@ const createUser = (req, res, next) => {
       _id: user._id,
     }))
     .catch((err) => {
-      console.log(err);
       if (err.code === 11000) {
         next(new Conflicted('Пользователь уже существует'));
       } else if (err.name === 'ValidationError') {
