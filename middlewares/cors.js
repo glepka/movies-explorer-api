@@ -1,6 +1,8 @@
 const allowedCors = [
   'http://glepka.movies.nomoredomains.work/',
   'https://glepka.movies.nomoredomains.work/',
+  'http://glepka.github.io/movies-explorer-frontend/',
+  'https://glepka.github.io/movies-explorer-frontend/',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
